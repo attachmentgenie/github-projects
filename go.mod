@@ -1,4 +1,4 @@
-module github.com/attachmentgenie/github/v2
+module github.com/attachmentgenie/github-projects/v2
 
 go 1.15
 
