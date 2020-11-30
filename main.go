@@ -28,11 +28,11 @@ func main() {
 	client := github.NewClient(tc)
 
 	opt := &github.RepositoryListOptions{
-		ListOptions: github.ListOptions{PerPage: 10},
+		Affiliation: "owner",
 	}
 	var allRepos []*github.Repository
 	for {
-		repos, resp, err := client.Repositories.List(ctx, opts.GithubUser, opt)
+		repos, resp, err := client.Repositories.List(ctx, "", opt)
 		if err != nil {
 			if _, ok := err.(*github.RateLimitError); ok {
 				log.Println("hit rate limit")
@@ -56,10 +56,7 @@ func main() {
 	openIssues := 0
 	for _, repository := range allRepos {
 
-		iOpt := &github.IssueListByRepoOptions{
-			ListOptions: github.ListOptions{PerPage: 20},
-		}
-		issues, _, _ := client.Issues.ListByRepo(ctx, opts.GithubUser, *repository.Name, iOpt)
+		issues, _, _ := client.Issues.ListByRepo(ctx, opts.GithubUser, *repository.Name, nil)
 
 		if len(issues) > 0 {
 			for _, issue := range issues {
