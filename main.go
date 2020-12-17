@@ -53,25 +53,49 @@ func main() {
 	tbl := table.New("Repo", "Type", "Number", "Description", "Created")
 	tbl.WithHeaderFormatter(headerFmt).WithFirstColumnFormatter(columnFmt)
 
+	// repository counters
+	forks :=0
+	archives :=0
+	private :=0
+	//template_repos := 0
+	// issue counter
 	openIssues := 0
 	for _, repository := range allRepos {
-
-		issues, _, _ := client.Issues.ListByRepo(ctx, opts.GithubUser, *repository.Name, nil)
-
-		if len(issues) > 0 {
-			for _, issue := range issues {
-
-				var issueType = "Issue"
-				if issue.IsPullRequest() {
-					issueType = "PR"
-				}
-				tbl.AddRow(*repository.Name, issueType, *issue.Number, *issue.Title, *issue.CreatedAt)
-				openIssues++
+		if !*repository.Archived {
+			if *repository.Fork {
+				forks++
 			}
+			if *repository.Private {
+				private++
+			}
+			// @todo doesnt seemed to be returned as a property
+			//if *repository.IsTemplate {
+			//	template_repos++
+			//}
+
+			issues, _, _ := client.Issues.ListByRepo(ctx, opts.GithubUser, *repository.Name, nil)
+
+			if len(issues) > 0 {
+				for _, issue := range issues {
+
+					var issueType = "Issue"
+					if issue.IsPullRequest() {
+						issueType = "PR"
+					}
+					tbl.AddRow(*repository.Name, issueType, *issue.Number, *issue.Title, *issue.CreatedAt)
+					openIssues++
+				}
+			}
+		} else {
+			archives++
 		}
 	}
 
 	tbl.Print()
-	fmt.Println("Public Repos:", len(allRepos))
+	fmt.Println("Repos:", len(allRepos))
+	fmt.Println("Forked repos:", forks)
+	fmt.Println("Archived repos:", archives)
+	fmt.Println("Private repos:", private)
+	//fmt.Println("Templates:", template_repos)
 	fmt.Println("Open Issues:", openIssues)
 }
