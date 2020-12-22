@@ -20,7 +20,7 @@ var (
 )
 
 func main() {
-	fmt.Printf("github-projects %s, commit %s, built at %s by %s", version, commit, date, builtBy)
+	fmt.Printf("github-projects %s, commit %s, built at %s by %s\n\n", version, commit, date, builtBy)
 
 	var opts struct {
 		GithubUser  string `short:"u" long:"user" default:"attachmentgenie" required:"true" name:"github user"`
