@@ -12,7 +12,15 @@ import (
 	"golang.org/x/oauth2"
 )
 
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+	builtBy = "unknown"
+)
+
 func main() {
+	fmt.Printf("github-projects %s, commit %s, built at %s by %s", version, commit, date, builtBy)
 
 	var opts struct {
 		GithubUser  string `short:"u" long:"user" default:"attachmentgenie" required:"true" name:"github user"`
