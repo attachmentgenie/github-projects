@@ -13,6 +13,9 @@ github-projects
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+# All exported summaries
+*.md
+
 # Dependency directories (remove the comment below to include it)
 # vendor/
 /dist/
