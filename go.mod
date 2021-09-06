@@ -17,3 +17,5 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 )
+
+require github.com/mattn/go-colorable v0.1.8 // indirect
