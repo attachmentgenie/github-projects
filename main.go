@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/fatih/color"
-	"github.com/google/go-github/v32/github"
+	"github.com/google/go-github/v38/github"
 	"github.com/jessevdk/go-flags"
 	"github.com/rodaine/table"
 	"golang.org/x/oauth2"
@@ -25,7 +25,7 @@ func main() {
 
 	var opts struct {
 		GithubUser  string `short:"u" long:"user" default:"attachmentgenie" required:"true" name:"github user"`
-		GithubToken string `short:"t" long:"token" required:"true" name:"github auth token"`
+		GithubToken string `short:"t" long:"token" env:"GITHUB_TOKEN" required:"true" name:"github auth token"`
 	}
 	_, err := flags.Parse(&opts)
 	if err != nil {

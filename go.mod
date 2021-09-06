@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/fatih/color v1.12.0
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-github/v32 v32.1.0
+	github.com/google/go-github/v38 v38.1.0
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/mattn/go-isatty v0.0.13 // indirect
