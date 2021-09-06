@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/fatih/color"
 	"github.com/google/go-github/v32/github"
@@ -26,7 +27,10 @@ func main() {
 		GithubUser  string `short:"u" long:"user" default:"attachmentgenie" required:"true" name:"github user"`
 		GithubToken string `short:"t" long:"token" required:"true" name:"github auth token"`
 	}
-	flags.Parse(&opts)
+	_, err := flags.Parse(&opts)
+	if err != nil {
+		os.Exit(2)
+	}
 
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
