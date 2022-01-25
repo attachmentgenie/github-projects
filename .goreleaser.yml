@@ -2,14 +2,35 @@ before:
   hooks:
     - go mod download
     - go generate ./...
-builds:
-  - env:
-      - CGO_ENABLED=0
-    targets:
-      - "linux_amd64"
 archives:
-  - replacements:
-      amd64: x86_64
+  - id: darwin
+    builds:
+    - darwin
+  - id: linux
+    builds:
+    - linux
+brews:
+  - ids:
+      - darwin
+    tap:
+      owner: attachmentgenie
+      name: github-projects
+builds:
+  - id: darwin
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+  - id: linux
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
 checksum:
   name_template: 'checksums.txt'
 snapshot:
