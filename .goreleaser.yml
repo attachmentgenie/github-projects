@@ -6,9 +6,6 @@ archives:
   - id: darwin
     builds:
     - darwin
-  - id: linux
-    builds:
-    - linux
 brews:
   - ids:
       - darwin
@@ -33,6 +30,11 @@ builds:
       - amd64
 checksum:
   name_template: 'checksums.txt'
+dockers:
+  - ids:
+    - linux
+    image_templates:
+    - attachmentgenie/github-projects
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
