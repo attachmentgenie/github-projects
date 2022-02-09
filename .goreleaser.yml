@@ -35,7 +35,7 @@ dockers:
   - ids:
     - linux
     image_templates:
-    - "images.lab/githubprojects:latest"
+    - "registry.lab/github-projects:latest"
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
