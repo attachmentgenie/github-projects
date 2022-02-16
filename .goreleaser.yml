@@ -12,6 +12,7 @@ brews:
     tap:
       owner: attachmentgenie
       name: github-projects
+    skip_upload: true
 builds:
   - id: darwin
     env:
@@ -29,13 +30,10 @@ builds:
     goarch:
       - amd64
       - arm64
+release:
+  prerelease: auto
 checksum:
   name_template: 'checksums.txt'
-dockers:
-  - ids:
-    - linux
-    image_templates:
-    - "registry.lab/github-projects:latest"
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
