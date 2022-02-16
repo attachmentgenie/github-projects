@@ -4,4 +4,8 @@ build:
 darwin:
 	goreleaser build --id darwin --snapshot --rm-dist 
 linux:
-	goreleaser build --id linux --snapshot --rm-dist 
+	goreleaser build --id linux --snapshot --rm-dist
+snapshot:
+	goreleaser release --snapshot --rm-dist
+release:
+	goreleaser release --rm-dist 

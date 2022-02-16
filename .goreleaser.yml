@@ -1,11 +1,12 @@
 before:
   hooks:
     - go mod download
-    - go generate ./...
 archives:
-  - id: tar
+  - id: darwin
     builds:
     - darwin
+  - id: linux
+    builds:
     - linux
 brews:
   - ids:
@@ -29,7 +30,11 @@ builds:
       - linux
     goarch:
       - amd64
+      - arm
       - arm64
+    goarm:
+      - 6
+      - 7
 release:
   prerelease: auto
 checksum:
