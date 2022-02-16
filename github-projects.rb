@@ -5,21 +5,21 @@
 class GithubProjects < Formula
   desc ""
   homepage ""
-  version "0.6.3"
+  version "0.8.0"
   depends_on :macos
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/attachmentgenie/github-projects/releases/download/v0.6.3/github-projects_0.6.3_darwin_arm64.tar.gz"
-      sha256 "81c9cea702879868a0239e16aa0d9f7c0f998ce67f8a09c3f2c423deeb64b594"
+    if Hardware::CPU.intel?
+      url "https://github.com/attachmentgenie/github-projects/releases/download/v0.8.0/github-projects_0.8.0_darwin_amd64.tar.gz"
+      sha256 "a1e096724eed731d53b1ee184d0f6dbb2a50ecfb34ef4767d8d4df313276f451"
 
       def install
         bin.install "github-projects"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/attachmentgenie/github-projects/releases/download/v0.6.3/github-projects_0.6.3_darwin_amd64.tar.gz"
-      sha256 "5dc1da9bd1015ca396f690bf76ece7755226b1925804f54c61055321a7273d54"
+    if Hardware::CPU.arm?
+      url "https://github.com/attachmentgenie/github-projects/releases/download/v0.8.0/github-projects_0.8.0_darwin_arm64.tar.gz"
+      sha256 "f20fa6b4a4859d661d264ba35e92c6652f8f543765c430ba4b4602551c982dc2"
 
       def install
         bin.install "github-projects"
