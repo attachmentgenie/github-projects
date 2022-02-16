@@ -3,16 +3,16 @@ before:
     - go mod download
     - go generate ./...
 archives:
-  - id: darwin
+  - id: tar
     builds:
     - darwin
+    - linux
 brews:
   - ids:
       - darwin
     tap:
       owner: attachmentgenie
       name: github-projects
-    skip_upload: true
 builds:
   - id: darwin
     env:
