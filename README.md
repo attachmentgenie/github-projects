@@ -1,7 +1,12 @@
 # github-projects
+
+![goreleaser](https://github.com/attachmentgenie/github-projects/workflows/goreleaser/badge.svg)
+
 review your projects and open tickets
 
 ## install
 
-    brew tap attachmentgenie/github-projects https://github.com/attachmentgenie/github-projects.git
-    brew install github-projects
+### os x
+
+    brew tap attachmentgenie/tap
+    brew install attachmentgenie/tap/github-projects
