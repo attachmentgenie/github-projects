@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/fatih/color"
-	"github.com/google/go-github/v38/github"
+	"github.com/google/go-github/v60/github"
 	"github.com/jessevdk/go-flags"
 	"github.com/rodaine/table"
 	"golang.org/x/oauth2"
