@@ -39,12 +39,12 @@ func main() {
 	tc := oauth2.NewClient(ctx, ts)
 	client := github.NewClient(tc)
 
-	opt := &github.RepositoryListOptions{
-		Affiliation: "owner",
+	opt := &github.RepositoryListByUserOptions{
+		Type: "owner",
 	}
 	var allRepos []*github.Repository
 	for {
-		repos, resp, err := client.Repositories.List(ctx, "", opt)
+		repos, resp, err := client.Repositories.ListByUser(ctx, opts.GithubUser, opt)
 		if err != nil {
 			if _, ok := err.(*github.RateLimitError); ok {
 				log.Println("hit rate limit")
@@ -66,10 +66,10 @@ func main() {
 	tbl.WithHeaderFormatter(headerFmt).WithFirstColumnFormatter(columnFmt)
 
 	// repository counters
-	forks :=0
-	archives :=0
-	private :=0
-	//template_repos := 0
+	forks := 0
+	archives := 0
+	private := 0
+	template_repos := 0
 	// issue counter
 	openIssues := 0
 	for _, repository := range allRepos {
@@ -80,10 +80,9 @@ func main() {
 			if *repository.Private {
 				private++
 			}
-			// @todo doesnt seemed to be returned as a property
-			//if *repository.IsTemplate {
-			//	template_repos++
-			//}
+			if *repository.IsTemplate {
+				template_repos++
+			}
 
 			issues, _, _ := client.Issues.ListByRepo(ctx, opts.GithubUser, *repository.Name, nil)
 
@@ -108,6 +107,6 @@ func main() {
 	fmt.Println("Forked repos:", forks)
 	fmt.Println("Archived repos:", archives)
 	fmt.Println("Private repos:", private)
-	//fmt.Println("Templates:", template_repos)
+	fmt.Println("Templates:", template_repos)
 	fmt.Println("Open Issues:", openIssues)
 }
