@@ -13,7 +13,7 @@ jobs:
       DOCKER_CLI_EXPERIMENTAL: "enabled"
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Docker Login
         uses: docker/login-action@v3
         with:
@@ -27,7 +27,7 @@ jobs:
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: "homebrew-tap"
-      - uses: anchore/sbom-action/download-syft@v0.20.1
+      - uses: anchore/sbom-action/download-syft@v0.20.6
       - uses: actions/setup-go@v6
         with:
           go-version-file: go.mod
