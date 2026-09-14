@@ -1,13 +1,13 @@
 module github.com/attachmentgenie/github-projects/v2
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/fatih/color v1.19.0
 	github.com/google/go-github/v60 v60.0.0
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/rodaine/table v1.3.1
-	golang.org/x/oauth2 v0.36.0
+	golang.org/x/oauth2 v0.37.0
 )
 
 require (
