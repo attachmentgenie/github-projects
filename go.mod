@@ -6,7 +6,7 @@ require (
 	github.com/fatih/color v1.19.0
 	github.com/google/go-github/v60 v60.0.0
 	github.com/jessevdk/go-flags v1.6.1
-	github.com/rodaine/table v1.3.1
+	github.com/rodaine/table v1.4.0
 	golang.org/x/oauth2 v0.36.0
 )
 
